@@ -27,7 +27,11 @@ public class TV {
 	}
 	
 	public void setCanal(int canal) {
-		this.canal = canal;
+		if (estado == true) {
+			if (canal >= 1 && canal <= 120) {
+				this.canal = canal;
+			}
+		}
 	}
 	
 	public int getCanal() {
@@ -43,7 +47,9 @@ public class TV {
 	}
 	
 	public void setVolumen(int volumen) {
-		this.volumen = volumen;
+		if (this.estado && 0 <= volumen && volumen <= 7) {
+			this.volumen = volumen;
+		}
 	}
 	
 	public int getVolumen() {
@@ -56,5 +62,49 @@ public class TV {
 	
 	public Control getControl() {
 		return control;
+	}
+	
+	public static void setNumTV(int numTV) {
+		TV.numTV = numTV;
+	}
+	
+	public static int getNumTV() {
+		return numTV;
+	}
+	
+	public void turnOn() {
+		estado = true;
+	}
+	
+	public void turnOff() {
+		estado = false;
+	}
+	
+	public boolean getEstado() {
+		return estado;
+	}
+	
+	public void canalUp() {
+		if (this.estado && this.canal < 120) {
+			this.canal++;
+		}
+	}
+	
+	public void canalDown() {
+		if (this.estado && this.canal > 1) {
+			this.canal++;
+		}
+	}
+	
+	public void volumenUp() {
+		if (this.estado == true && this.volumen < 7) {
+			this.volumen++;
+		}
+	}
+	
+	public void volumenDown() {
+		if(this.estado == true && this.volumen > 0) {
+			this.volumen++;
+		}
 	}
 }
